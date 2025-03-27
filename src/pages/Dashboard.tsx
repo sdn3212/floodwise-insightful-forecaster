@@ -9,7 +9,8 @@ import {
   BarChartIcon,
   WindIcon,
   Eye,
-  ArrowRight
+  ArrowRight,
+  BrainIcon
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -295,7 +296,13 @@ const Dashboard = () => {
                     </p>
                     <Button 
                       variant="outline" 
-                      onClick={() => document.querySelector('button[value="parameters"]')?.click()}
+                      onClick={() => {
+                        // Fix: Use querySelector and then dispatchEvent instead of click()
+                        const parametersTab = document.querySelector('button[value="parameters"]');
+                        if (parametersTab) {
+                          parametersTab.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+                        }
+                      }}
                       className="rounded-full"
                     >
                       Go to Parameters
