@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { 
   DropletIcon, 
@@ -20,7 +19,6 @@ import { toast } from "sonner";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 
-// Mock feature names similar to what would be loaded from feature_names.pkl
 const mockFeatureNames = [
   "Rainfall (mm)",
   "Water Level (m)",
@@ -32,7 +30,6 @@ const mockFeatureNames = [
   "Elevation (m)"
 ];
 
-// Mapping feature names to icons
 const featureIcons: { [key: string]: any } = {
   "Rainfall (mm)": CloudRainIcon,
   "Water Level (m)": DropletIcon,
@@ -44,7 +41,6 @@ const featureIcons: { [key: string]: any } = {
   "Elevation (m)": BarChartIcon
 };
 
-// Feature default and range values
 const featureDefaults: { [key: string]: {default: number, min: number, max: number, step: number} } = {
   "Rainfall (mm)": {default: 50, min: 0, max: 300, step: 1},
   "Water Level (m)": {default: 2, min: 0, max: 10, step: 0.1},
@@ -65,14 +61,12 @@ const Dashboard = () => {
   const [aiInsights, setAiInsights] = useState<string | null>(null);
   
   useEffect(() => {
-    // Set default values for features
     const defaults: {[key: string]: number} = {};
     mockFeatureNames.forEach(name => {
       defaults[name] = featureDefaults[name]?.default || 0;
     });
     setFeatureValues(defaults);
     
-    // Animation delay
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
@@ -87,7 +81,6 @@ const Dashboard = () => {
   };
 
   const handleReset = () => {
-    // Reset to default values
     const defaults: {[key: string]: number} = {};
     mockFeatureNames.forEach(name => {
       defaults[name] = featureDefaults[name]?.default || 0;
@@ -102,9 +95,7 @@ const Dashboard = () => {
   const handlePredict = () => {
     setIsSubmitting(true);
     
-    // Simulate API call to the ML model backend
     setTimeout(() => {
-      // Mock the prediction result (random for demo purposes)
       const isHighRisk = Math.random() > 0.5;
       const result = isHighRisk 
         ? "🚨 High Flood Risk Level!" 
@@ -112,7 +103,6 @@ const Dashboard = () => {
       
       setPredictionResult(result);
       
-      // Mock AI insights
       const insights = `
       🔍 Flood Prediction Analysis:
       
@@ -138,7 +128,6 @@ const Dashboard = () => {
       setAiInsights(insights);
       setIsSubmitting(false);
       
-      // Show toast notification
       if (isHighRisk) {
         uiToast({
           variant: "destructive",
@@ -160,7 +149,6 @@ const Dashboard = () => {
       
       <main className="flex-grow pt-20 pb-10">
         <div className="container mx-auto px-4 sm:px-6 py-8">
-          {/* Header */}
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Flood Risk Prediction Dashboard</h1>
             <p className="text-lg text-gray-600">
@@ -297,7 +285,6 @@ const Dashboard = () => {
                     <Button 
                       variant="outline" 
                       onClick={() => {
-                        // Fix: Use querySelector and then dispatchEvent instead of click()
                         const parametersTab = document.querySelector('button[value="parameters"]');
                         if (parametersTab) {
                           parametersTab.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -321,11 +308,11 @@ const Dashboard = () => {
             <div className="flex items-center mb-4 md:mb-0">
               <DropletIcon className="h-6 w-6 text-primary mr-2" />
               <span className="text-gray-600 text-sm">
-                FloodWise<span className="font-light">AI</span>
+                Protex
               </span>
             </div>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} FloodWiseAI. All rights reserved.
+              © {new Date().getFullYear()} Protex. All rights reserved.
             </div>
           </div>
         </div>

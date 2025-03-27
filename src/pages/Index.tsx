@@ -138,10 +138,10 @@ const Index = () => {
           <div className="flex flex-col items-center justify-center">
             <DropletIcon className="h-8 w-8 text-primary mb-2" />
             <p className="text-gray-600 text-sm">
-              FloodWise<span className="font-light">AI</span> — Intelligent Flood Risk Prediction System
+              Protex — Intelligent Flood Risk Prediction System
             </p>
             <div className="mt-3 text-sm text-gray-500">
-              © {new Date().getFullYear()} FloodWiseAI. All rights reserved.
+              © {new Date().getFullYear()} Protex. All rights reserved.
             </div>
           </div>
         </div>
