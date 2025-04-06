@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -24,7 +23,7 @@ export const Navigation = () => {
             >
               <DropletIcon className="h-8 w-8 text-primary animate-pulse-subtle" />
               <span className="text-xl font-medium text-gray-900 tracking-tight">
-                FloodWise<span className="font-light">AI</span>
+                Protex
               </span>
             </Link>
           </div>
